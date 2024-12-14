@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студия растяжки</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #FDFAF3;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            padding: 5px;
+            background-color: #D9B596;
+			position: relative;
+        }
+        .header img {
+            max-width: 110px;
+        }
+		.vk-link {
+            position: absolute; /* Позиционируем по правому краю */
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .vk-link img {
+            width: 30px; /* Размер иконки */
+            height: auto;
+        }
+        .banner {
+            width: 80%;
+            height: auto;
+			margin: 20px 60px 20px;
+			border-radius: 10px;
+			border: 4px solid #F2CC85;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+            color: #333333;
+        }
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .cta {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #f39c12;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta:hover {
+            background-color: #e67e22;
+        }
+		.slider-container {
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			border: 4px solid #F2CC85;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 300px;
+        }
+        .slide img {
+            width: 300px;
+            height: 100%;
+            object-fit: cover;
+        }
+		.buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #FFFFFF;
+            background-color: #D9B596;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with logo -->
+        <div class="header">
+            <img src="LOGO_URL1.png" alt="Логотип студии">
+
+          <!--  <a href="https://vk.com/youstretch" class="vk-link" target="_blank">
+                <i class="fab fa-vk">YOUSTRETCH</i> 
+            </a>-->
+        </div>
+        <!-- Banner -->
+        <img src="BANNER_URL.jpg" alt="Баннер студии" class="banner">
+        <!-- Content -->
+        <div class="content">
+            <h1>Добро пожаловать в студию растяжки и балета!</h1>
+            <p>Почувствуйте свободу движений и гармонию с телом. Запишитесь на пробное занятие уже сегодня!</p>
+			<!-- Slider -->
+            <div class="slider-container">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="IMAGE1_URL.jpg" alt="Занятие 1">
+                    </div>
+                    <div class="slide">
+                        <img src="IMAGE2_URL.jpg" alt="Занятие 2">
+                    </div>
+                    <div class="slide">
+                        <img src="IMAGE3_URL.jpg" alt="Занятие 3">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="button" id="prev">⟨</button>
+                    <button class="button" id="next">⟩</button>
+                </div>
+            </div>
+            <a href="https://vk.com/app6013442_-201896554?form_id=2#form_id=2" class="cta">Записаться</a>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2024 YOU STRETCH. Все права защищены.</br></br>
+			<a href="youstretching@mail.ru" style="color: #ffffff; text-decoration: none;">youstretching@mail.ru</a><br></br>
+            <a href="tel:+79992362433" style="color: #ffffff; text-decoration: none;">+7(999)236-24-33</a>
+        </div>
+    </div>
+	<script>
+        const slides = document.querySelector('.slides');
+        const slideCount = document.querySelectorAll('.slide').length;
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            const offset = -currentIndex * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+    </script>
+</body>
+</html>
